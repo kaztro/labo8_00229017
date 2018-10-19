@@ -28,23 +28,31 @@ let cont = 1;
 var bitacoras = [];
 let formulario = document.getElementById("bitacora");
 
-//¿Qué contienen la variable formulario? La variable formulario contiene el formulario como un array
-
 formulario.addEventListener("submit", (evt) => { evt.preventDefault(); });
 
-//¿Qué hace el método evt.preventDefault()? Es para que en vez de hacer lo que normalmente hace realice una accion que queremos 
+var first_field = document.getElementById("fecha");
 
-formulario.addEventListener("submit", (evt) => {
-    evt.preventDefault();
-    let bitacora = {
-        cant: cont,
-        fecha: formulario[1].value,
-        descripcion: formulario[2].value,
-        cantidad: formulario[3].value
-    }
-});
+first_field.oninput = () => {
+    var valor = first_field.value;
+    if (valor == "" || valor == null) first_field.style.borderColor = "red";
+    else first_field.style.borderColor = "green";
+}
 
-// ¿Qué es lo que contiene formulario[x]? los div que hay dentro de form
+var second_element = document.getElementById("descp");
+
+second_element.oninput = () => {
+    var valor = second_element.value;
+    if (valor == "" || valor == null) second_element.style.borderColor = "red";
+    else second_element.style.borderColor = "green";
+}
+
+var last_element = document.getElementById("cant");
+
+last_element.oninput = () => {
+    var valor = last_element.value;
+    if (valor == "" || valor == null) last_element = "red";
+    else last_element.style.borderColor = "green";
+}
 
 formulario.addEventListener("submit", (evt) => {
     evt.preventDefault();
@@ -59,6 +67,7 @@ formulario.addEventListener("submit", (evt) => {
     mostrar();
 });
 
+
 const crearElemento = (bitacora, tbody) => {
     let tr = document.createElement("tr");
     Object.values(bitacora).forEach(item => {
@@ -71,15 +80,7 @@ const crearElemento = (bitacora, tbody) => {
     tbody.appendChild(tr);
 }
 
-//¿Qué contienen las variables tr y td? "tr" contiene a "td" y "td" contiene a "content"
-//¿Qué contienen la variable content? "item" lo cual es el texto que contiene el nodo
-//¿Qué valor tendra tbody al finalizar la iteración? tendra un textnode "item"... tbody tiene a dentro a tr que tiene a dentro a td que tiene adentro a content el cual tiene el nodo de texto "item"...
-//Describa en pocas palabras lo que realizara esta función Crea un elemento en el tbody 
-
 const eliminar = (tbody) => { while (tbody.firstChild) tbody.removeChild(tbody.firstChild); }
-
-//¿Qué es lo que hace .firstChild? Selecciona o toma al primer hijo que este dentro de tbody... 
-//Después de realizar el while ¿Comó quedara el elemento tbody? Vacio...
 
 const agregar = () => {
     var eventtr = document.querySelectorAll(".click");
@@ -92,8 +93,6 @@ const agregar = () => {
     })
 }
 
-//¿Qué es lo que obtenemos cuando se ejecuta item.childNodes[i].textContent; El contenido (texto) de cada uno de sus nodos...
-
 const mostrar = () => {
     if (document.querySelector(".tabla-btc tbody").childElementCount > 0) {
         eliminar(document.querySelector(".tabla-btc tbody"));
@@ -103,13 +102,4 @@ const mostrar = () => {
     });
     agregar();
 }
-
-//¿Qué es lo que obtenemos cuando se realiza document.querySelector(".tabla-btc tbody")? El primer elemento que encaje con ".tabla-btc tbody" 
-//¿Qué hace el método childElementCount? retorna el numero de hijos que tiene un elemento 
-//¿Qué se mostrara en pantalla cuando se ejecute la función agregar()? Nada pues solo los ha agregado, aun no los ha mostrado...
-//¿Qué se mostrara en el navegador despues de ejecutar la función mostrar?  Llenara los campos de la tabla con los datos ingresados
-
-
-
- 
 
