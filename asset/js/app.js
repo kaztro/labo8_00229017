@@ -68,6 +68,7 @@ formulario.addEventListener("submit", (evt) => {
 });
 
 
+
 const crearElemento = (bitacora, tbody) => {
     let tr = document.createElement("tr");
     Object.values(bitacora).forEach(item => {
