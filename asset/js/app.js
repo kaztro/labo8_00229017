@@ -106,5 +106,10 @@ const mostrar = () => {
 
 //¿Qué es lo que obtenemos cuando se realiza document.querySelector(".tabla-btc tbody")? El primer elemento que encaje con ".tabla-btc tbody" 
 //¿Qué hace el método childElementCount? retorna el numero de hijos que tiene un elemento 
+//¿Qué se mostrara en pantalla cuando se ejecute la función agregar()? Nada pues solo los ha agregado, aun no los ha mostrado...
+//¿Qué se mostrara en el navegador despues de ejecutar la función mostrar?  Llenara los campos de la tabla con los datos ingresados
+
+
+
  
 
