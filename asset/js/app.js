@@ -34,37 +34,60 @@ var first_field = document.getElementById("fecha");
 
 first_field.oninput = () => {
     var valor = first_field.value;
-    if (valor == "" || valor == null) first_field.style.borderColor = "red";
-    else first_field.style.borderColor = "green";
+    if (valor == "" || valor == null) {
+        first_field.style.borderColor = "red";
+        first_field.style.border("5px");
+    }
+    else {
+        first_field.style.borderColor = "green";
+        first_field.style.border("5px");
+    }
 }
 
 var second_element = document.getElementById("descp");
 
 second_element.oninput = () => {
     var valor = second_element.value;
-    if (valor == "" || valor == null) second_element.style.borderColor = "red";
-    else second_element.style.borderColor = "green";
+    if (valor == "" || valor == null) {
+        second_element.style.borderColor = "red";
+        second_element.style.border("5px");
+    }
+    else {
+        second_element.style.borderColor = "green";
+        second_element.style.border("5px");
+    }
 }
 
 var last_element = document.getElementById("cant");
 
 last_element.oninput = () => {
     var valor = last_element.value;
-    if (valor == "" || valor == null) last_element = "red";
-    else last_element.style.borderColor = "green";
+    if (valor == "" || valor == null) {
+        last_element.style.borderColor = "red";
+        last_element.style.border("5px");
+    }
+    else {
+        last_element.style.borderColor = "green";
+        last_elementfirst_field.style.borderColor = "green";
+    }
 }
 
 formulario.addEventListener("submit", (evt) => {
     evt.preventDefault();
-    let bitacora = {
-        cant: cont,
-        fecha: formulario[1].value,
-        descripcion: formulario[2].value,
-        cantidad: formulario[3].value
+    if (first_field.style.borderColor == "red" || second_element.style.borderColor == "red" || last_element == "red") {
+        document.getElementsByTagName("input").disabled = true;
     }
-    bitacoras.push(bitacora);
-    cont++;
-    mostrar();
+    else {
+        let bitacora = {
+            cant: cont,
+            fecha: formulario[1].value,
+            descripcion: formulario[2].value,
+            cantidad: formulario[3].value
+        }
+        bitacoras.push(bitacora);
+        cont++;
+        mostrar();
+    }
 });
 
 
